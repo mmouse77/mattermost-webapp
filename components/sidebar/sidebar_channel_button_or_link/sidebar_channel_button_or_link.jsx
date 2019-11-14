@@ -85,18 +85,6 @@ export default class SidebarChannelButtonOrLink extends React.PureComponent {
     render = () => {
         let badge = null;
 
-        if(this.props.unreadMsgs > 0)
-        {
-            badge = (
-                <span
-                    id='unreadMentions'
-                    className='badge'
-                >
-                    {this.props.unreadMsgs}
-                </span>
-            );
-        }
-
         if (this.props.badge) {
             badge = (
                 <span
@@ -107,6 +95,17 @@ export default class SidebarChannelButtonOrLink extends React.PureComponent {
                 </span>
             );
         }
+        
+        if (this.props.unreadMsgs > 0) {
+            badge = (
+                <span
+                    id='unreadMentions'
+                    className='badge'
+                >
+                    {this.props.unreadMsgs}
+                </span>
+            );
+        }        
 
         const content = (
             <React.Fragment>

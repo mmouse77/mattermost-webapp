@@ -72,38 +72,19 @@ export default class TeamSidebar extends React.PureComponent {
         const teams = filterAndSortTeamsByDisplayName(this.props.myTeams, this.props.locale).
             map((team) => {
                 const member = this.props.myTeamMembers[team.id];
-
-                if(!member.mention_count && member.msg_count > 0) {
-                    return (
-                        <TeamButton
-                            key={'switch_team_' + team.name}
-                            url={`/${team.name}`}
-                            tip={team.display_name}
-                            active={team.id === this.props.currentTeamId}
-                            displayName={team.display_name}
-                            unread={member.msg_count > 0}
-                            mentions={member.msg_count}
-                            teamIconUrl={Utils.imageURLForTeam(team)}
-                            switchTeam={this.props.actions.switchTeam}
-                        />
-                    );                    
-                }
-
-                else {
-                    return (
-                        <TeamButton
-                            key={'switch_team_' + team.name}
-                            url={`/${team.name}`}
-                            tip={team.display_name}
-                            active={team.id === this.props.currentTeamId}
-                            displayName={team.display_name}
-                            unread={member.msg_count > 0}
-                            mentions={member.mention_count}
-                            teamIconUrl={Utils.imageURLForTeam(team)}
-                            switchTeam={this.props.actions.switchTeam}
-                        />
-                    );
-                }
+                return (
+                    <TeamButton
+                        key={'switch_team_' + team.name}
+                        url={`/${team.name}`}
+                        tip={team.display_name}
+                        active={team.id === this.props.currentTeamId}
+                        displayName={team.display_name}
+                        unread={member.msg_count > 0}
+                        mentions={member.msg_count}
+                        teamIconUrl={Utils.imageURLForTeam(team)}
+                        switchTeam={this.props.actions.switchTeam}
+                    />
+                );
             });
 
         if (this.props.moreTeamsToJoin && !this.props.experimentalPrimaryTeam) {
