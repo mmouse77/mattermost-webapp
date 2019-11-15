@@ -80,7 +80,7 @@ export default class TeamSidebar extends React.PureComponent {
                         active={team.id === this.props.currentTeamId}
                         displayName={team.display_name}
                         unread={member.msg_count > 0}
-                        mentions={member.mention_count}
+                        mentions={member.msg_count}
                         teamIconUrl={Utils.imageURLForTeam(team)}
                         switchTeam={this.props.actions.switchTeam}
                     />
